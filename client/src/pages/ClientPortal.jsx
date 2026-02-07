@@ -11,7 +11,7 @@ function ClientPortal() {
   useEffect(() => {
     // جلب بيانات المشروع
     axios
-      .get(`http://localhost:5000/api/projects/${id}`)
+      .get(`http://76.13.44.173/api/projects/${id}`)
       .then((res) => {
         setProject(res.data);
         setLoading(false);
@@ -174,3 +174,4 @@ function ClientPortal() {
 }
 
 export default ClientPortal;
+
