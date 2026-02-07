@@ -26,7 +26,7 @@ function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/dashboard/stats");
+      const res = await axios.get("http://76.13.44.173/api/dashboard/stats");
       setData(res.data);
       setLoading(false);
     } catch (err) {
@@ -375,3 +375,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
