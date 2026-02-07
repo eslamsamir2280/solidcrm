@@ -30,11 +30,11 @@ function Reports() {
     try {
       let endpoint = "";
       if (reportType === "financial")
-        endpoint = `http://localhost:5000/api/reports/financial?startDate=${dates.start}&endDate=${dates.end}`;
+        endpoint = `http://76.13.44.173/api/reports/financial?startDate=${dates.start}&endDate=${dates.end}`;
       else if (reportType === "projects")
-        endpoint = `http://localhost:5000/api/reports/projects`;
+        endpoint = `http://76.13.44.173/api/reports/projects`;
       else if (reportType === "attendance")
-        endpoint = `http://localhost:5000/api/reports/attendance?startDate=${dates.start}&endDate=${dates.end}`; // 👈 الرابط الجديد
+        endpoint = `http://76.13.44.173/api/reports/attendance?startDate=${dates.start}&endDate=${dates.end}`; // 👈 الرابط الجديد
 
       const res = await axios.get(endpoint);
       setData(res.data);
@@ -368,3 +368,4 @@ function Reports() {
 }
 
 export default Reports;
+
