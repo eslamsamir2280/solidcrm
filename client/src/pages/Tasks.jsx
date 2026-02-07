@@ -17,7 +17,7 @@ function Tasks() {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/tasks");
+      const res = await axios.get("http://76.13.44.173/api/tasks");
       setTasks(res.data);
     } catch (err) {
       console.error(err);
@@ -28,7 +28,7 @@ function Tasks() {
     e.preventDefault();
     if (!title) return alert("اكتب عنوان المهمة");
     try {
-      await axios.post("http://localhost:5000/api/tasks", {
+      await axios.post("http://76.13.44.173/api/tasks", {
         title,
         description: desc,
         assignedTo,
@@ -47,7 +47,7 @@ function Tasks() {
 
   const toggleTaskStatus = async (task) => {
     const newStatus = task.status === "Pending" ? "Completed" : "Pending";
-    await axios.put(`http://localhost:5000/api/tasks/${task._id}`, {
+    await axios.put(`http://76.13.44.173/api/tasks/${task._id}`, {
       status: newStatus,
     });
     fetchTasks();
@@ -55,7 +55,7 @@ function Tasks() {
 
   const deleteTask = async (id) => {
     if (!window.confirm("حذف المهمة؟")) return;
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+    await axios.delete(`http://76.13.44.173/api/tasks/${id}`);
     fetchTasks();
   };
 
@@ -360,3 +360,4 @@ function Tasks() {
 }
 
 export default Tasks;
+
