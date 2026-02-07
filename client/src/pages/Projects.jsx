@@ -26,11 +26,11 @@ function Projects() {
   }, []);
 
   const fetchProjects = async () => {
-    const res = await axios.get("http://localhost:5000/api/projects");
+    const res = await axios.get("http://76.13.44.173/api/projects");
     setProjects(res.data);
   };
   const fetchClients = async () => {
-    const res = await axios.get("http://localhost:5000/api/clients");
+    const res = await axios.get("http://76.13.44.173/api/clients");
     setClients(res.data);
   };
 
@@ -44,7 +44,7 @@ function Projects() {
     if (file) formData.append("muqaysaFile", file);
 
     try {
-      await axios.post("http://localhost:5000/api/projects", formData, {
+      await axios.post("http://76.13.44.173/api/projects", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       fetchProjects();
@@ -310,3 +310,4 @@ function Projects() {
 }
 
 export default Projects;
+
