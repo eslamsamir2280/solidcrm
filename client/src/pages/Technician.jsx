@@ -16,7 +16,7 @@ function Technician() {
   // 1. جلب المشاريع المتاحة للفني فقط
   const fetchWorkOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/projects");
+      const res = await axios.get("http://76.13.44.173/api/projects");
       // الفلتر: المشاريع الجاهزة للتركيب أو اللي شغالين فيها بالفعل
       const activeProjects = res.data.filter(
         (p) =>
@@ -47,7 +47,7 @@ function Technician() {
     setLoading(true);
     try {
       await axios.put(
-        `http://localhost:5000/api/projects/${projectId}/items/${itemId}`,
+        `http://76.13.44.173/api/projects/${projectId}/items/${itemId}`,
         {
           serialNumber: serial,
         }
@@ -354,3 +354,4 @@ function Technician() {
 }
 
 export default Technician;
+
