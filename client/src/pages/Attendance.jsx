@@ -57,7 +57,7 @@ function Attendance() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/attendance/leave",
+        "http://76.13.44.173/api/attendance/leave",
         { employeeId: empId, note }
       );
       alert(res.data.message);
@@ -277,4 +277,5 @@ function Attendance() {
 }
 
 export default Attendance;
+
 
