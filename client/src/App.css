@@ -1,0 +1,43 @@
+/* الحاوية الكبيرة اللي شايلة التطبيق كله */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  direction: rtl; /* عشان عربي */
+  background-color: #0f172a; /* نفس لون خلفية السايد بار عشان ميكونش فيه فراغات بيضاء */
+}
+
+/* منطقة المحتوى الرئيسي */
+.main-content {
+  flex-grow: 1; /* ياخد باقي المساحة المتاحة */
+  background-color: #f1f5f9; /* لون رمادي فاتح (Slate-100) */
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  
+  /* تجميل: حواف دائرية من ناحية السايد بار */
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  
+  /* عشان المحتوى ميتزحلقش تحت السايد بار */
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* منع السكرول العرضي */
+  position: relative;
+  z-index: 1;
+}
+
+/* الحاوية الداخلية للمحتوى (عشان الهوامش) */
+.content-wrapper {
+  padding: 30px 40px; /* مساحات واسعة مريحة */
+  max-width: 1600px; /* عشان الشاشات الكبيرة جداً */
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* في حالة صفحة البوابة (Portal) بنلغي تأثيرات الداشبورد */
+.portal-mode {
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: white;
+}

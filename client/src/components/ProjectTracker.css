@@ -1,0 +1,138 @@
+/* الحاوية الرئيسية */
+.tracker-container {
+  overflow-x: auto;
+  padding: 30px 20px 40px 20px !important; /* مساحات كافية */
+  background: white;
+  border-radius: 16px;
+  /* Scrollbar مخفي عشان الشكل */
+  scrollbar-width: none; 
+}
+.tracker-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tracker-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  min-width: 750px; /* عرض كبير عشان نضمن إن العناصر متزنقش */
+  margin: 0 auto;
+}
+
+/* --- الخطوة (Step) --- */
+.step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- الخطوط الواصلة (Connecting Lines) --- */
+.step::before {
+  content: '';
+  position: absolute;
+  top: 25px;      /* منتصف الدائرة */
+  right: 50%;     /* يبدأ من نص الدائرة لليمين */
+  width: 100%;    /* يوصل للدائرة اللي قبله */
+  height: 6px;    /* سمك الخط */
+  background-color: #e2e8f0;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+/* إخفاء الخط عن أول عنصر (لأنه ملوش سابق) */
+.step:first-child::before {
+  display: none;
+}
+
+/* تلوين الخطوط المكتملة */
+.step.completed::before,
+.step.active::before {
+  background: linear-gradient(to left, #4f46e5, #10b981); /* تدرج لوني فخم */
+}
+
+/* --- الدائرة (Circle) --- */
+.step-circle {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 3px solid #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة نطاطة */
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* --- حالات الدائرة --- */
+
+/* 1. مكتملة */
+.step.completed .step-circle {
+  background-color: #10b981; /* أخضر */
+  border-color: #10b981;
+  color: white;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+}
+
+/* 2. نشطة (الحالية) */
+.step.active .step-circle {
+  background-color: #4f46e5; /* أزرق */
+  border-color: #4f46e5;
+  color: white;
+  transform: scale(1.2); /* تكبير الدائرة الحالية */
+  box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.2); /* هالة شفافة */
+  animation: pulse-ring 2s infinite;
+}
+
+/* --- النصوص (Labels) --- */
+.step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.step-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #94a3b8;
+  transition: color 0.3s;
+}
+
+.step.active .step-label {
+  color: #4f46e5;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.step.completed .step-label {
+  color: #1e293b;
+}
+
+/* التاريخ */
+.step-date {
+  font-size: 0.75rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+/* --- Animations --- */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(79, 70, 229, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}

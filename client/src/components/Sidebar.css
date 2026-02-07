@@ -1,0 +1,163 @@
+/* --- 1. الحاوية الرئيسية للسايد بار --- */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: #0f172a; /* لون كحلي غامق (Dark Slate) */
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2); /* زيادة الظل قليلاً */
+  transition: all 0.3s ease;
+  z-index: 1000;
+  overflow: hidden; /* لمنع أي تمدد غير مرغوب */
+}
+
+/* --- 2. منطقة اللوجو (تم دمج التنسيقات) --- */
+.sidebar-header {
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column; /* ترتيب العناصر تحت بعض */
+  align-items: center;    /* توسيط أفقي */
+  justify-content: center;
+  gap: 8px;               /* مسافة بين الاسم والنسخة */
+  border-bottom: 1px solid rgba(226, 232, 240, 0.1); /* خط فاصل خافت جداً */
+  margin-bottom: 20px;
+  height: 400px;
+  background: linear-gradient(to bottom, #0f172a, #1e293b); /* تدرج خفيف للخلفية */
+}
+
+.brand-name {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* ظل خفيف للنص */
+}
+
+.brand-sub {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  background: rgba(255,255,255,0.05);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+/* --- 3. القائمة (Links) --- */
+.sidebar-menu {
+  list-style: none;
+  padding: 0 12px; /* مسافة جانبية عشان الزرار ميكنش لازق في الحافة */
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto; 
+
+  /* تنسيق السكرول لمتصفح Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+
+/* تنسيق السكرول لمتصفحات Chrome, Edge */
+.sidebar-menu::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-menu::-webkit-scrollbar-thumb {
+  background-color: #334155;
+  border-radius: 10px;
+}
+.sidebar-menu::-webkit-scrollbar-thumb:hover {
+  background-color: #475569;
+}
+
+/* --- 4. عناصر القائمة --- */
+.menu-item {
+  margin-bottom: 6px;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #cbd5e1;
+  text-decoration: none;
+  border-radius: 10px; /* حواف دائرية */
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+/* أيقونة القائمة */
+.menu-icon {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; 
+}
+
+/* تأثير عند المرور (Hover) */
+.menu-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  transform: translateX(-3px); /* حركة بسيطة لليسار (مناسب للعربي RTL) */
+}
+
+/* --- الرابط النشط (Active) --- */
+.menu-link.active {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); /* توهج */
+}
+
+/* إضافة خط صغير يمين الرابط النشط */
+.menu-link.active::before {
+  content: '';
+  position: absolute;
+  right: -12px; /* خارج حدود الزر */
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 4px;
+  background-color: #818cf8;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  opacity: 0; /* مخفي حالياً، لو حابب تظهره شيل opacity */
+}
+
+/* --- 5. الفوتر (زر الخروج) --- */
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(226, 232, 240, 0.1);
+  background-color: #0f172a; /* نفس لون الخلفية عشان لو القائمة طويلة */
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3); /* بوردر خفيف */
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit; /* يرث نفس خط الموقع */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logout-btn:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+}
