@@ -19,14 +19,14 @@ function Finance() {
   }, []);
 
   const fetchData = async () => {
-    const resTrans = await axios.get("http://localhost:5000/api/finance");
-    const resStats = await axios.get("http://localhost:5000/api/finance/stats");
+    const resTrans = await axios.get("http://76.13.44.173/api/finance");
+    const resStats = await axios.get("http://76.13.44.173/api/finance/stats");
     setTransactions(resTrans.data);
     setStats(resStats.data);
   };
 
   const fetchProjects = async () => {
-    const res = await axios.get("http://localhost:5000/api/projects");
+    const res = await axios.get("http://76.13.44.173/api/projects");
     setProjects(res.data);
   };
 
@@ -35,7 +35,7 @@ function Finance() {
     if (!amount || !description) return alert("أكمل البيانات");
 
     try {
-      await axios.post("http://localhost:5000/api/finance", {
+      await axios.post("http://76.13.44.173/api/finance", {
         type,
         amount: Number(amount),
         category,
@@ -282,3 +282,4 @@ function Finance() {
 }
 
 export default Finance;
+
