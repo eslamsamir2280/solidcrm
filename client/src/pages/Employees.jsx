@@ -20,7 +20,7 @@ function Employees() {
 
   const fetchEmployees = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/employees");
+      const res = await axios.get("http://76.13.44.173/api/employees");
       setEmployees(res.data);
       setLoading(false);
     } catch (err) {
@@ -34,7 +34,7 @@ function Employees() {
     if (!newEmp.name || !newEmp.basicSalary)
       return alert("أكمل البيانات المطلوبة");
     try {
-      await axios.post("http://localhost:5000/api/employees", newEmp);
+      await axios.post("http://76.13.44.173/api/employees", newEmp);
       alert("✅ تم تعيين الموظف بنجاح");
       setShowAddForm(false);
       setNewEmp({ name: "", role: "Worker", basicSalary: "", phone: "" });
@@ -53,7 +53,7 @@ function Employees() {
     if (!amount) return;
 
     try {
-      await axios.post(`http://localhost:5000/api/employees/${id}/pay-salary`, {
+      await axios.post(`http://76.13.44.173/api/employees/${id}/pay-salary`, {
         amount: Number(amount),
       });
       alert("💰 تم صرف الراتب وتسجيله في المصروفات");
@@ -68,7 +68,7 @@ function Employees() {
     if (!amount) return;
 
     try {
-      await axios.post(`http://localhost:5000/api/employees/${id}/advance`, {
+      await axios.post(`http://76.13.44.173/api/employees/${id}/advance`, {
         amount: Number(amount),
       });
       alert("⚠️ تم تسجيل السلفة وخصمها من الخزنة");
@@ -92,7 +92,7 @@ function Employees() {
     // لو عاوز تدخله الخزنة كإيراد ممكن تعمل Checkbox
 
     try {
-      await axios.post(`http://localhost:5000/api/employees/${id}/repay-loan`, {
+      await axios.post(`http://76.13.44.173/api/employees/${id}/repay-loan`, {
         amount: Number(amount),
         isCash: false,
       });
@@ -343,3 +343,4 @@ function Employees() {
 }
 
 export default Employees;
+
