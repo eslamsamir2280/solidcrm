@@ -42,7 +42,7 @@ function Attendance() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/attendance/reset-leaves"
+        "http://76.13.44.173/api/attendance/reset-leaves"
       );
       alert(res.data.message);
       fetchAttendance();
@@ -277,5 +277,6 @@ function Attendance() {
 }
 
 export default Attendance;
+
 
 
