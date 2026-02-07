@@ -11,7 +11,7 @@ function Attendance() {
 
   const fetchAttendance = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/attendance/today");
+      const res = await axios.get("http://76.13.44.173/api/attendance/today");
       setReport(res.data);
       setLoading(false);
     } catch (err) {
@@ -277,3 +277,4 @@ function Attendance() {
 }
 
 export default Attendance;
+
