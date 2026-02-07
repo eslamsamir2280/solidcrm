@@ -48,7 +48,7 @@ function ProjectDetails() {
 
   const fetchProjectDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/projects/${id}`);
+      const res = await axios.get(`http://76.13.44.173/api/projects/${id}`);
       setProject(res.data);
       if (res.data.financials?.totalValue)
         setPrice(res.data.financials.totalValue);
@@ -68,7 +68,7 @@ function ProjectDetails() {
     formData.append("status", "ClientReview");
     if (quoteFile) formData.append("quotationFile", quoteFile);
     try {
-      await axios.put(`http://localhost:5000/api/projects/${id}`, formData, {
+      await axios.put(`http://76.13.44.173/api/projects/${id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("✅ تم");
@@ -92,7 +92,7 @@ function ProjectDetails() {
       },
     ];
     try {
-      await axios.put(`http://localhost:5000/api/projects/${id}`, {
+      await axios.put(`http://76.13.44.173/api/projects/${id}`, {
         financials: { ...project.financials, installments: newInstallments },
         status:
           project.status === "ClientReview" ? "Manufacturing" : project.status,
@@ -114,7 +114,7 @@ function ProjectDetails() {
     );
     const newPaid = (project.financials.paidAmount || 0) + Number(amount);
     try {
-      await axios.put(`http://localhost:5000/api/projects/${id}`, {
+      await axios.put(`http://76.13.44.173/api/projects/${id}`, {
         financials: {
           ...project.financials,
           installments: updatedInst,
@@ -139,7 +139,7 @@ function ProjectDetails() {
       },
     ];
     try {
-      await axios.put(`http://localhost:5000/api/projects/${id}`, {
+      await axios.put(`http://76.13.44.173/api/projects/${id}`, {
         items: newItems,
       });
       alert("✅ تم");
@@ -152,7 +152,7 @@ function ProjectDetails() {
   const handleScheduleInstallation = async () => {
     if (!installDateInput) return;
     try {
-      await axios.put(`http://localhost:5000/api/projects/${id}`, {
+      await axios.put(`http://76.13.44.173/api/projects/${id}`, {
         status: "ReadyForInstallation",
         installationDate: installDateInput,
       });
@@ -169,7 +169,7 @@ function ProjectDetails() {
     formData.append("certFile", certFile);
     try {
       await axios.post(
-        `http://localhost:5000/api/projects/${id}/certificates`,
+        `http://76.13.44.173/api/projects/${id}/certificates`,
         formData
       );
       alert("✅ تم");
@@ -181,7 +181,7 @@ function ProjectDetails() {
   const handleCompleteProject = async () => {
     if (!window.confirm("إنهاء؟")) return;
     try {
-      await axios.put(`http://localhost:5000/api/projects/${id}`, {
+      await axios.put(`http://76.13.44.173/api/projects/${id}`, {
         status: "Completed",
       });
       fetchProjectDetails();
@@ -673,3 +673,4 @@ function ProjectDetails() {
 }
 
 export default ProjectDetails;
+
