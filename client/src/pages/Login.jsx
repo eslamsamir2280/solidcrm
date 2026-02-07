@@ -25,7 +25,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post("http://76.13.44.173/api/auth/login", {
         username: formData.username,
         password: formData.password,
       });
@@ -44,7 +44,7 @@ function Login() {
       return toast.warning("أكمل البيانات");
 
     try {
-      await axios.post("http://localhost:5000/api/auth/register", formData);
+      await axios.post("http://76.13.44.173/api/auth/register", formData);
       toast.success("تم إنشاء الحساب بنجاح! يمكنك الدخول الآن ✅");
       setIsRegister(false); // ارجع لصفحة الدخول
     } catch (err) {
@@ -221,3 +221,4 @@ const styles = {
 };
 
 export default Login;
+
