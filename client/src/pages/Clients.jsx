@@ -19,7 +19,7 @@ function Clients() {
 
   const fetchClients = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/clients");
+      const res = await axios.get("http://76.13.44.173/api/clients");
       setClients(res.data);
     } catch (err) {
       console.error(err);
@@ -29,7 +29,7 @@ function Clients() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/clients", form);
+      await axios.post("http://76.13.44.173/api/clients", form);
       fetchClients();
       // تفريغ الفورم بالكامل
       setForm({ name: "", phone: "", companyName: "", email: "", address: "" });
@@ -217,3 +217,4 @@ function Clients() {
 }
 
 export default Clients;
+
